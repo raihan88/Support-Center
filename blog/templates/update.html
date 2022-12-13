@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Update Question
+{%endblock%}
+
+{% block content%}
+
+{% if user.is_authenticated %}
+
+
+     <h1 align=center >Update this Question</h1> <br>
+
+    <div class = row style="margin-left:300px"> 
+        <div class = "form-group col-xs-12">
+            <form method="POST">
+            {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Update</button>
+     </div>
+    </div>
+
+    {% else %}
+
+    <p align = center> Please Login First  </p>
+  
+  {% endif %}
+
+{% endblock%}

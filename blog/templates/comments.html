@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Add Comment 
+{%endblock%}
+
+{% block content%}
+
+{% if user.is_authenticated %}
+    
+     <h1 align=center >Add Comment </h1> <br>
+
+    <div class = row style="margin-left:300px"> 
+        <div class = "form-group col-xs-12">
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Comment</button>
+        <a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+     </div>
+    </div>
+     
+
+    {% else %}
+
+    <p align = center> Please Login First  </p>
+  
+  {% endif %}
+
+{% endblock%}

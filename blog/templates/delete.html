@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Delete Question
+{%endblock%}
+
+
+{% block content%}
+
+{% if user.is_authenticated %}
+
+
+     <h1 align=center >Delete Question</h1> <br>
+    <br> 
+    <div class = row style="margin-left:100px"> 
+
+        <h2> {{ post.question }}</h2>
+    </div>
+
+    <div class = row style="margin-left:100px"> 
+        <div class = "form-group col-xs-12">
+            <form method="POST">
+            {% csrf_token %}
+        
+        <strong align= center> Are You Sure Want To Permanently Delete This Question ? </strong>
+        <br><br>
+        <button class="btn btn-danger">Delete</button>
+     </div>
+    </div>
+
+    {% else %}
+
+    <p align = center> Please Login First  </p>
+  
+    {% endif %}
+
+{% endblock%}

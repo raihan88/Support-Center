@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Ask Question
+{%endblock%}
+
+{% block content%}
+
+{% if user.is_authenticated and user.role == 2 %}
+    
+     <h1 align=center >Ask a Question</h1> <br>
+
+    <div class = row style="margin-left:300px"> 
+        <div class = "form-group col-xs-12">
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Ask</button>
+        <a href="{% url 'home' %}" class="btn btn-primary">Back</a> 
+
+     </div>
+    </div>
+
+
+      <script>
+        var name = "{{ user.id }}"; 
+        document.getElementById("userid").value = name;
+      </script>
+
+    {% else %}
+
+    <p align = center> Please Login First  </p>
+  
+  {% endif %}
+
+{% endblock%}
